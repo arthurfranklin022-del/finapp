@@ -97,3 +97,16 @@ export function employerMatch(grossSalary, contributionPct, { matchRate, matchCa
 export function missedMatch(grossSalary, contributionPct, rule) {
   return employerMatch(grossSalary, rule.matchCap, rule) - employerMatch(grossSalary, contributionPct, rule)
 }
+
+// Rotativo do cartão com o teto da lei (Lei 14.690/2023, em vigor desde jan/2024):
+// juros e encargos do rotativo e do parcelamento da fatura não podem passar de 100% da
+// dívida original. Ou seja, a dívida pode no máximo dobrar.
+export function revolvingDebtAfterMonths(balance, monthlyRate, months, cap = 1) {
+  return Math.min(debtAfterMonths(balance, monthlyRate, months), balance * (1 + cap))
+}
+
+// Renda mensal fixa que um saldo paga por X anos, enquanto o que fica segue rendendo
+// (mesma conta da parcela fixa, só que ao contrário: o plano "paga" a pessoa).
+export function monthlyIncomeFromBalance(balance, annualRate, years) {
+  return loanPayment(balance, annualToMonthly(annualRate), Math.round(years * 12))
+}

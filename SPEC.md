@@ -217,7 +217,24 @@ _07/nov/2026_
 
 
 ### Etapa 3
--
+_07/nov/2026_
+- **Opções:** em cada situação, 1 é a "melhor escolha" (⭐, 30 pontos), 1 é o caminho do meio
+  (◐, 20 pontos) e 1 "dá para melhorar" (○, 10 pontos). Tom gentil, nunca "errou". Isso permite
+  ao painel da Etapa 5 medir os temas com mais escolhas fracas.
+- **Ponto de partida (cada persona já usa o app há um tempo):** Carla 30 pts e 1 dia seguido
+  (Semente) · Roberto 110 pts e 5 dias (Broto) · Dona Lúcia 280 pts e 12 dias (Muda) ·
+  Pedro do zero (Semente).
+- **Níveis = fases do Broto:** Semente (0) → Broto (100) → Muda (250) → Árvore (450 pontos).
+  Jogando bem a semana (7 × 30 = 210 pontos), cada persona sobe exatamente 1 nível.
+- **Sequência:** 1 folga por semana. O primeiro dia pulado na semana não zera a sequência
+  (fica "protegida"); o segundo zera. No modo demo, "avançar um dia" sem responder conta como
+  dia pulado.
+- **"Avançar um dia":** botão na barra de demo (some quando a barra é escondida).
+- **Subir de nível:** cartão com o Broto mudando de fase, confete rápido e "Você virou Muda!".
+- **Depois do 7º dia:** resumo da semana (pontos, nível, sequência, quantas melhores escolhas e
+  as lições da semana) com botão para recomeçar.
+- **Conteúdo:** o Claude escreveu as 28 situações e o Arthur revisa pela tabela
+  `docs/etapa3-situacoes.md` antes da programação das telas.
 
 ### Etapa 4
 -
