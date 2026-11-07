@@ -1,7 +1,11 @@
 import { formatBRL } from './lib/format.js'
+import { useHashRoute } from './lib/useHashRoute.js'
+import Identities from './pages/Identities.jsx'
 
 // Tela provisória da Etapa 0. Navegação e identidade visual chegam na Etapa 1.
 export default function App() {
+  const page = useHashRoute()
+  if (page === 'identidades') return <Identities />
   return (
     <main className="min-h-dvh bg-slate-50 text-slate-800 flex items-center justify-center p-6">
       <section className="w-full max-w-md bg-white rounded-2xl shadow-sm border border-slate-200 p-8 text-center">
