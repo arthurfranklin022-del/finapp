@@ -158,7 +158,21 @@ _07/nov/2026_
 - Tela provisória "Olá, Finapp" com cores neutras; a identidade visual fica para a Etapa 1.
 
 ### Etapa 1
--
+_07/nov/2026_
+- **Mascote x símbolo:** variar entre as opções, para comparar lado a lado.
+- **Nome:** manter "Finapp" como marca nas telas.
+- **3 direções para comparar:** (A) **Raiz**: verde-floresta e creme, mascote Broto (plantinha
+  que cresce com o nível), tom acolhedor. (B) **Horizonte**: azul-marinho e âmbar, símbolo de
+  sol nascendo, tom sóbrio e confiante. (C) **Coruja**: azul-petróleo e coral, mascote coruja,
+  tom leve e de conversa.
+- **Navegação:** barra de demo fina no topo com as 4 áreas e o seletor de persona; cada área
+  ocupa o resto da tela com seu próprio visual.
+- **Barra de demo:** recolhível (visível por padrão, botão para esconder e um botão pequeno
+  no canto para trazer de volta).
+- **WhatsApp e Situação do dia no notebook:** dentro de uma moldura de celular; no celular de
+  verdade ocupam a tela toda.
+- **Depois da escolha:** o app usa só a identidade escolhida; a página de comparação fica no
+  projeto como registro, fora da navegação principal.
 
 ### Etapa 2
 -
