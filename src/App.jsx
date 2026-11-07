@@ -8,12 +8,14 @@ import Presentation from './pages/Presentation.jsx'
 import WhatsApp from './pages/WhatsApp.jsx'
 import Situation from './pages/Situation.jsx'
 import Dashboard from './pages/Dashboard.jsx'
+import PersonaSheet from './pages/PersonaSheet.jsx'
 
 const TITLES = {
   apresentacao: 'Apresentação',
   whatsapp: 'WhatsApp',
   situacao: 'Situação do dia',
   painel: 'Painel da EFPC',
+  persona: 'Ficha da persona',
   identidades: 'Identidade visual',
 }
 
@@ -57,6 +59,7 @@ export default function App() {
         {page === 'whatsapp' && <WhatsApp persona={persona} />}
         {page === 'situacao' && <Situation persona={persona} />}
         {page === 'painel' && <Dashboard />}
+        {page === 'persona' && <PersonaSheet persona={persona} onPersonaChange={setPersonaId} />}
       </main>
     </div>
   )

@@ -201,6 +201,19 @@ _07/nov/2026_
     R$ 380); reserva R$ 300.
 - **Pedro pode entrar no plano família** da PrevExemplo (sem contrapartida); ainda não entrou.
 - **Dona Lúcia não tem consignado**, só recebe ofertas (educação preventiva).
+- **Taxas aprovadas** (em `src/data/assumptions.js`, mostradas no quadro "Premissas da demo"):
+  inflação 4% ao ano · plano PrevExemplo 4% ao ano acima da inflação · renda fixa conservadora
+  4% acima da inflação · poupança 2% acima da inflação · rotativo 13% ao mês · cheque especial
+  7,5% ao mês · consignado 1,8% ao mês. Idade de aposentadoria nas projeções: 60 anos.
+- **Contas de destaque:** Carla (custo do rotativo, contrapartida que falta, delivery em 10 anos);
+  Roberto (contrapartida que falta, poupança x renda fixa, sobra investida até os 60); Dona Lúcia
+  (até quando o saldo dura, custo de um consignado de R$ 10 mil em 84x, meses que a reserva
+  cobre); Pedro (R$ 100/mês no plano família desde os 19 x desde os 30, delivery em 10 anos,
+  tempo até a reserva de 3 meses).
+- **Detalhes técnicos:** motor de cálculo em `src/lib/finance.js`; contas da ficha em
+  `src/lib/highlights.js`; ficha em `src/pages/PersonaSheet.jsx`. Com o 5º botão ("Ficha"), a
+  barra de demo usa rótulos curtos até 1536px de largura e fica em duas linhas abaixo de 1280px.
+  Capturas em `docs/capturas/etapa2-ficha-*.png`.
 
 
 ### Etapa 3

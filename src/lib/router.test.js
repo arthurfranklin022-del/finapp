@@ -2,8 +2,8 @@ import { describe, it, expect } from 'vitest'
 import { AREAS, pageFromHash, hashForPage, DEFAULT_PAGE } from './router.js'
 
 describe('navegação por endereço', () => {
-  it('tem as 4 áreas da demo', () => {
-    expect(AREAS.map((a) => a.id)).toEqual(['apresentacao', 'whatsapp', 'situacao', 'painel'])
+  it('tem as 4 áreas da demo e a ficha da persona', () => {
+    expect(AREAS.map((a) => a.id)).toEqual(['apresentacao', 'whatsapp', 'situacao', 'painel', 'persona'])
   })
   it('lê a área a partir do endereço', () => {
     expect(pageFromHash('#/whatsapp')).toBe('whatsapp')

@@ -1,12 +1,14 @@
 // Navegação por "#" no endereço (ex.: .../#/whatsapp).
 // Funciona sem servidor e no Netlify sem configuração extra.
 
-// As 4 áreas da demo, na ordem em que aparecem na barra
+// As 4 áreas da demo + a ficha da persona, na ordem em que aparecem na barra
 export const AREAS = [
   { id: 'apresentacao', label: 'Apresentação', short: 'Início' },
   { id: 'whatsapp', label: 'WhatsApp', short: 'WhatsApp' },
   { id: 'situacao', label: 'Situação do dia', short: 'Situação' },
   { id: 'painel', label: 'Painel da EFPC', short: 'Painel' },
+  // Ferramenta do apresentador: quem é a persona e seus números (Etapa 2)
+  { id: 'persona', label: 'Ficha da persona', short: 'Ficha' },
 ]
 
 // Páginas que existem mas não aparecem na barra (ex.: registro da comparação)

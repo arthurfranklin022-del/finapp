@@ -20,7 +20,7 @@ export default function DemoBar({ page, personaId, onPersonaChange, hidden, onTo
 
   return (
     <header className="sticky top-0 z-50 bg-brand-dark text-white shadow-md">
-      <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-4 gap-y-2 px-3 py-2 lg:flex-nowrap">
+      <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-4 gap-y-2 px-3 py-2 xl:flex-nowrap">
         {/* marca + selo de demo */}
         <div className="flex items-center gap-2">
           <Logo size={30} light />
@@ -33,7 +33,7 @@ export default function DemoBar({ page, personaId, onPersonaChange, hidden, onTo
         <button
           type="button"
           onClick={onToggle}
-          className="ml-auto rounded-lg px-2 py-1.5 text-sm font-semibold text-white/80 hover:bg-white/10 hover:text-white lg:order-4 lg:ml-0"
+          className="ml-auto rounded-lg px-2 py-1.5 text-sm font-semibold text-white/80 hover:bg-white/10 hover:text-white xl:order-4 xl:ml-0"
           aria-label="Esconder a barra do modo demo (tecla D)"
           title="Esconder (tecla D)"
         >
@@ -41,12 +41,12 @@ export default function DemoBar({ page, personaId, onPersonaChange, hidden, onTo
         </button>
 
         {/* seletor de persona (no celular, linha inteira) */}
-        <label className="flex w-full items-center gap-2 text-sm lg:order-3 lg:w-auto">
+        <label className="flex w-full items-center gap-2 text-sm xl:order-3 xl:w-auto">
           <span className="shrink-0 text-white/80">Persona</span>
           <select
             value={personaId}
             onChange={(e) => onPersonaChange(e.target.value)}
-            className="min-w-0 flex-1 rounded-lg border border-white/30 bg-white/10 px-2 py-1.5 font-semibold text-white"
+            className="min-w-0 flex-1 rounded-lg border border-white/30 bg-white/10 px-2 py-1.5 font-semibold text-white xl:w-60 xl:flex-none"
             aria-label="Escolher persona"
           >
             {personas.map((p) => (
@@ -57,9 +57,9 @@ export default function DemoBar({ page, personaId, onPersonaChange, hidden, onTo
           </select>
         </label>
 
-        {/* as 4 áreas */}
-        <nav aria-label="Áreas da demo" className="w-full lg:order-2 lg:w-auto lg:flex-1 lg:pl-4">
-          <ul className="grid grid-cols-4 gap-1 lg:flex lg:justify-center">
+        {/* as 4 áreas + ficha da persona */}
+        <nav aria-label="Áreas da demo" className="w-full xl:order-2 xl:w-auto xl:flex-1 xl:pl-4">
+          <ul className="flex justify-between gap-0.5 xl:justify-center xl:gap-1">
             {AREAS.map((area) => {
               const active = area.id === page
               return (
@@ -67,12 +67,12 @@ export default function DemoBar({ page, personaId, onPersonaChange, hidden, onTo
                   <a
                     href={hashForPage(area.id)}
                     aria-current={active ? 'page' : undefined}
-                    className={`block rounded-full px-1 py-1.5 text-center text-[0.85rem] font-bold whitespace-nowrap lg:px-4 lg:text-sm ${
+                    className={`block rounded-full px-2 py-1.5 text-center text-[0.8rem] min-[400px]:text-[0.85rem] font-bold whitespace-nowrap xl:px-4 xl:text-sm ${
                       active ? 'bg-white text-brand-dark' : 'text-white/85 hover:bg-white/10 hover:text-white'
                     }`}
                   >
-                    <span className="lg:hidden">{area.short}</span>
-                    <span className="hidden lg:inline">{area.label}</span>
+                    <span className="2xl:hidden">{area.short}</span>
+                    <span className="hidden 2xl:inline">{area.label}</span>
                   </a>
                 </li>
               )
