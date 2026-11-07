@@ -1,10 +1,26 @@
 @import "tailwindcss";
 
-/* Fonte base maior para leitura confortável (pensando na Dona Lúcia).
-   Cores e tipografia definitivas entram na Etapa 1. */
+/* Identidade visual escolhida na Etapa 1: opção A "Raiz" (mascote Broto).
+   Todas as cores e a fonte do app vêm daqui; para ajustar, mude só este bloco.
+   Uso no código: bg-brand, text-ink, bg-cream, text-muted, bg-honey etc. */
+@theme {
+  --font-sans: 'Nunito Variable', system-ui, sans-serif;
+
+  --color-brand: #1F5D3F;        /* verde-floresta: botões, títulos, destaques */
+  --color-brand-dark: #154530;   /* verde mais escuro: barra de demo, botão pressionado */
+  --color-honey: #E9A23B;        /* mel: pontos, sequência, conquistas */
+  --color-cream: #FBF7EE;        /* creme: fundo das telas */
+  --color-surface: #FFFFFF;      /* branco: cartões */
+  --color-leaf: #DDEBDF;         /* folha clara: fundos suaves, opção selecionada */
+  --color-ink: #1E2A22;          /* texto principal */
+  --color-muted: #56655B;        /* texto secundário */
+}
+
+/* Fonte base maior para leitura confortável (pensando na Dona Lúcia) */
 html {
   font-size: 18px;
 }
 body {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--color-cream);
+  color: var(--color-ink);
 }

@@ -7,7 +7,12 @@ export default function Broto({ stage = 2, colors, size = 120, title = 'Broto, o
     <svg viewBox="0 0 120 120" width={size} height={size} role="img" aria-label={title}>
       <title>{title}</title>
       {/* caule e folhas, conforme a fase */}
-      {stage === 1 && <ellipse cx="60" cy="66" rx="7" ry="5" fill="#8A5A2B" />}
+      {stage === 1 && (
+        <>
+          <path d="M60 58 C 60 50 64 46 70 46" stroke={leafLight} strokeWidth="4" fill="none" strokeLinecap="round" />
+          <ellipse cx="60" cy="61" rx="9" ry="6" fill="#8A5A2B" />
+        </>
+      )}
       {stage >= 2 && <path d="M60 70 V 30" stroke={leaf} strokeWidth="5" strokeLinecap="round" />}
       {stage >= 2 && stage < 4 && (
         <>

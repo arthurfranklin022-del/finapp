@@ -98,3 +98,6 @@ export const identities = [
 export function getIdentity(id) {
   return identities.find((i) => i.id === id)
 }
+
+// Identidade escolhida na Etapa 1 (opção A — Raiz); usada para desenhar o Broto no app
+export const brandColors = getIdentity('raiz').colors

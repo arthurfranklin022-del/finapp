@@ -173,6 +173,14 @@ _07/nov/2026_
   verdade ocupam a tela toda.
 - **Depois da escolha:** o app usa só a identidade escolhida; a página de comparação fica no
   projeto como registro, fora da navegação principal.
+- **Identidade escolhida: (A) Raiz**, com o mascote **Broto**. Verde-floresta `#1F5D3F`, mel
+  `#E9A23B`, creme `#FBF7EE`, folha clara `#DDEBDF`; fonte Nunito; tom acolhedor e paciente.
+  As 4 fases do Broto (semente → broto → muda → árvore) ficam disponíveis para os níveis da
+  Etapa 3. Comparação guardada em `#/identidades` e em `docs/capturas/etapa1-identidades-*.png`.
+- **Nome da coruja (opção C, não escolhida):** "Sábia" ("sabiá" é outro pássaro).
+- **Detalhes técnicos:** cada área tem endereço próprio com `#` (`#/whatsapp`, `#/situacao`,
+  `#/painel`); cores e fonte ficam num bloco só em `src/index.css`; a persona escolhida e a
+  barra escondida ficam lembradas no navegador; tecla **D** esconde/mostra a barra de demo.
 
 ### Etapa 2
 -
