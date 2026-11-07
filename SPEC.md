@@ -183,7 +183,25 @@ _07/nov/2026_
   barra escondida ficam lembradas no navegador; tecla **D** esconde/mostra a barra de demo.
 
 ### Etapa 2
--
+_07/nov/2026_
+- **Projeções em valores reais** ("em dinheiro de hoje", já descontada a inflação). Dívidas
+  aparecem com a taxa nominal ao mês, como no contrato.
+- **Taxas:** o Claude propõe uma tabela com referências e o Arthur revisa (ver plano da etapa).
+- **Contrapartida da patrocinadora:** 100% do que a pessoa contribui, até 8% do salário bruto.
+- **Ficha da persona:** nova área na barra de demo, em `#/persona`. Mostra história curta e
+  objetivos, números, 3 contas de destaque, gráfico de gastos por categoria e quadro de premissas.
+- **Números das personas (aprovados):**
+  - Carla, 38, ativa: bruto R$ 6.800 / líquido R$ 5.200; gasta R$ 5.650 (falta R$ 450);
+    rotativo R$ 3.800; reserva R$ 0; contribui 2% (empresa põe 2%); saldo no plano R$ 38.000.
+  - Roberto, 45, ativo: bruto R$ 15.000 / líquido R$ 11.000; gasta R$ 8.200 (sobra R$ 2.800);
+    poupança R$ 85.000; sem dívidas; contribui 4% (deixa 4% da empresa de lado); saldo R$ 210.000.
+  - Dona Lúcia, 62, assistida: benefício do plano R$ 3.100 + INSS R$ 2.900 = R$ 6.000; gasta
+    R$ 5.700 (saúde R$ 1.300); reserva R$ 22.000; saldo remanescente no plano R$ 480.000.
+  - Pedro, 19, filho de participante: bolsa de estágio R$ 1.600; gasta R$ 1.450 (delivery/apps
+    R$ 380); reserva R$ 300.
+- **Pedro pode entrar no plano família** da PrevExemplo (sem contrapartida); ainda não entrou.
+- **Dona Lúcia não tem consignado**, só recebe ofertas (educação preventiva).
+
 
 ### Etapa 3
 -
