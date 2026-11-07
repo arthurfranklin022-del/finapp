@@ -29,5 +29,6 @@ export const ASSUMPTION_ROWS = [
   { label: 'Teto dos juros do rotativo', value: 'a dívida no máximo dobra', note: 'Lei 14.690/2023: juros do rotativo e do parcelamento da fatura limitados a 100% da dívida.' },
   { label: 'Dinheiro parado na conta ou em casa', value: '0% (perde para a inflação)', note: 'Em dinheiro de hoje, perde cerca de 3,8% por ano.' },
   { label: 'Idade de aposentadoria', value: '60 anos', note: 'Usada nas projeções do plano.' },
+  { label: 'Impostos', value: 'não entram nas contas', note: 'Para simplificar, os valores são antes do Imposto de Renda.' },
   { label: 'Renda do plano na aposentadoria', value: 'paga por 25 anos', note: 'Dos 60 aos 85 anos, com o saldo rendendo 4% acima da inflação.' },
 ]

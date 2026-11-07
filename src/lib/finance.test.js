@@ -7,6 +7,9 @@ import {
   futureValueOfMonthly,
   monthlyInterest,
   debtAfterMonths,
+  revolvingDebtAfterMonths,
+  monthsToRevolvingCap,
+  monthlyIncomeFromBalance,
   loanPayment,
   loanSummary,
   monthsUntilZero,
@@ -61,7 +64,7 @@ describe('dívidas', () => {
   it('juros de um mês do rotativo: R$ 3.800 a 13% = R$ 494', () => {
     expect(monthlyInterest(3800, 0.13)).toBeCloseTo(494, 6)
   })
-  it('R$ 3.800 no rotativo sem pagar por 12 meses vira ≈ R$ 16,5 mil', () => {
+  it('conta pura, sem o teto da lei: R$ 3.800 a 13% por 12 meses daria ≈ R$ 16,5 mil', () => {
     expect(debtAfterMonths(3800, 0.13, 12)).toBeCloseTo(16471.19, 1)
   })
 })
@@ -127,5 +130,31 @@ describe('contrapartida da patrocinadora (100% até 8%)', () => {
   })
   it('regra de 50%: metade do que a pessoa põe', () => {
     expect(employerMatch(10000, 0.05, { matchRate: 0.5, matchCap: 0.1 })).toBeCloseTo(250, 6)
+  })
+})
+
+describe('rotativo com o teto da lei (Lei 14.690/2023)', () => {
+  it('antes do teto, cresce com juros compostos normalmente', () => {
+    expect(revolvingDebtAfterMonths(3800, 0.13, 3)).toBeCloseTo(3800 * 1.13 ** 3, 6)
+  })
+  it('a dívida no máximo dobra: R$ 3.800 para no máximo R$ 7.600', () => {
+    expect(revolvingDebtAfterMonths(3800, 0.13, 12)).toBe(7600)
+    expect(revolvingDebtAfterMonths(3800, 0.13, 120)).toBe(7600)
+  })
+  it('a 13% ao mês, chega ao teto em 6 meses', () => {
+    expect(monthsToRevolvingCap(0.13)).toBe(6)
+    expect(debtAfterMonths(1, 0.13, 5)).toBeLessThan(2)
+    expect(debtAfterMonths(1, 0.13, 6)).toBeGreaterThan(2)
+  })
+})
+
+describe('renda mensal a partir do saldo', () => {
+  it('sem rendimento, é só dividir: R$ 300 mil por 25 anos = R$ 1.000 por mês', () => {
+    expect(monthlyIncomeFromBalance(300000, 0, 25)).toBeCloseTo(1000, 6)
+  })
+  it('com rendimento, paga mais que a divisão simples e zera o saldo no fim do prazo', () => {
+    const income = monthlyIncomeFromBalance(500000, 0.04, 25)
+    expect(income).toBeGreaterThan(500000 / 300)
+    expect(monthsUntilZero(500000, annualToMonthly(0.04), income)).toBe(300)
   })
 })

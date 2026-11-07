@@ -17,10 +17,13 @@ describe('contas de destaque', () => {
     }
   })
 
-  it('Carla: rotativo custa R$ 494 por mês e vira ≈ R$ 16,5 mil em 12 meses', () => {
+  it('Carla: rotativo custa R$ 494 por mês e, pelo teto da lei, no máximo dobra (R$ 7.600) em ≈ 6 meses', () => {
     const h = get('carla', 'rotativo')
     expect(h.numbers.interest).toBeCloseTo(494, 6)
-    expect(h.numbers.after12).toBeCloseTo(16471, 0)
+    expect(h.numbers.capMonths).toBe(6)
+    expect(h.numbers.atCap).toBe(7600)
+    expect(h.detail).toContain('R$\u00a07.600')
+    expect(h.detail).not.toMatch(/16/)
   })
   it('Carla: deixa R$ 408 da empresa por mês; em 22 anos ≈ R$ 171 mil', () => {
     const h = get('carla', 'contrapartida')

@@ -4,7 +4,8 @@ import {
   futureValue,
   futureValueOfMonthly,
   monthlyInterest,
-  debtAfterMonths,
+  revolvingDebtAfterMonths,
+  monthsToRevolvingCap,
   loanSummary,
   monthsUntilZero,
   monthsToReach,
@@ -23,14 +24,16 @@ function revolvingCost(persona, a) {
   const debt = persona.debts.find((d) => d.rateKey === 'revolvingMonthly')
   const rate = a[debt.rateKey]
   const interest = monthlyInterest(debt.balance, rate)
-  const after12 = debtAfterMonths(debt.balance, rate, 12)
+  // Pela Lei 14.690/2023, os juros do rotativo não passam de 100% da dívida: ela no máximo dobra
+  const capMonths = monthsToRevolvingCap(rate, a.revolvingCap)
+  const atCap = revolvingDebtAfterMonths(debt.balance, rate, capMonths, a.revolvingCap)
   return {
     id: 'rotativo',
-    numbers: { interest, after12 },
+    numbers: { interest, capMonths, atCap },
     title: 'O rotativo custa caro',
     value: `${formatBRLRounded(interest)} por mês`,
-    detail: `Só de juros sobre os ${formatBRLRounded(debt.balance)} do cartão. Sem pagar, em 12 meses a dívida vira ${formatBRLShort(after12)}.`,
-    basis: 'Rotativo a 13% ao mês.',
+    detail: `Só de juros sobre os ${formatBRLRounded(debt.balance)} do cartão. Sem pagar, em cerca de ${capMonths} meses a dívida dobra e chega a ${formatBRLRounded(atCap)}, o máximo que a lei deixa cobrar.`,
+    basis: 'Rotativo a 13% ao mês; juros limitados a 100% da dívida (Lei 14.690/2023).',
   }
 }
 

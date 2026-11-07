@@ -235,6 +235,21 @@ _07/nov/2026_
   as lições da semana) com botão para recomeçar.
 - **Conteúdo:** o Claude escreveu as 28 situações e o Arthur revisa pela tabela
   `docs/etapa3-situacoes.md` antes da programação das telas.
+- **Correção da Etapa 2 (pedida pelo Arthur):** a ficha da Carla dizia que o rotativo de
+  R$ 3.800 virava R$ 16 mil em 12 meses. Pela Lei 14.690/2023 (desde jan/2024), os juros do
+  rotativo e do parcelamento da fatura não passam de 100% da dívida: ela no máximo dobra
+  (R$ 7.600, em cerca de 6 meses). O motor ganhou o teto (`revolvingDebtAfterMonths`,
+  `monthsToRevolvingCap`) e a ficha e as situações passaram a usá-lo.
+- **Premissas novas** (no quadro "Premissas da demo"): teto legal do rotativo; dinheiro parado
+  rende 0% (perde para a inflação); renda do plano paga por 25 anos (60 a 85); impostos não
+  entram nas contas. Nas situações: taxas de administração de 0,5%/1%/2% como exemplo; regra
+  fictícia da PrevExemplo de que a pessoa aposentada pode rever o benefício uma vez por ano;
+  Carla quita o cartão em cerca de 1 ano antes de mudar a contribuição.
+- **Revisão do conteúdo pelo Claude:** textos em 2ª pessoa ("você"), porque quem abre o link é
+  a própria pessoa; "deixar a fatura no rotativo" no lugar de "pagar o mínimo" (só sem pagar a
+  dívida dobra em 6 meses); diferenças calculadas sobre os valores arredondados mostrados;
+  correções de contas incoerentes (Pedro dia 3, Roberto dia 3, Carla dias 3, 5 e 7, Pedro dia 4).
+  Testes em `src/data/situations.test.js` garantem que a "melhor escolha" tem o melhor número.
 
 ### Etapa 4
 -

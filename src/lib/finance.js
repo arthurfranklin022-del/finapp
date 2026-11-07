@@ -110,3 +110,8 @@ export function revolvingDebtAfterMonths(balance, monthlyRate, months, cap = 1) 
 export function monthlyIncomeFromBalance(balance, annualRate, years) {
   return loanPayment(balance, annualToMonthly(annualRate), Math.round(years * 12))
 }
+
+// Em quantos meses o rotativo chega ao teto da lei (com 13% ao mês e teto de 100%: ≈ 6 meses).
+export function monthsToRevolvingCap(monthlyRate, cap = 1) {
+  return Math.ceil(Math.log(1 + cap) / Math.log(1 + monthlyRate))
+}
