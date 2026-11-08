@@ -1,19 +1,96 @@
-import { formatBRL } from './lib/format.js'
+import { useEffect, useState } from 'react'
+import { useHashRoute } from './lib/useHashRoute.js'
+import { loadPref, savePref } from './lib/storage.js'
+import { getPersona, DEFAULT_PERSONA_ID } from './data/personas.js'
+import { initialProgress, advanceDay, isValidProgress } from './lib/progress.js'
+import DemoBar from './components/DemoBar.jsx'
+import Identities from './pages/Identities.jsx'
+import Presentation from './pages/Presentation.jsx'
+import WhatsApp from './pages/WhatsApp.jsx'
+import Situation from './pages/Situation.jsx'
+import Dashboard from './pages/Dashboard.jsx'
+import PersonaSheet from './pages/PersonaSheet.jsx'
 
-// Tela provisória da Etapa 0. Navegação e identidade visual chegam na Etapa 1.
+const TITLES = {
+  apresentacao: 'Apresentação',
+  whatsapp: 'WhatsApp',
+  situacao: 'Situação do dia',
+  painel: 'Painel da EFPC',
+  persona: 'Ficha da persona',
+  identidades: 'Identidade visual',
+}
+
 export default function App() {
+  const { page, params } = useHashRoute()
+  const [personaId, setPersonaId] = useState(() => getPersona(loadPref('persona', DEFAULT_PERSONA_ID)).id)
+  const [barHidden, setBarHidden] = useState(() => loadPref('barHidden', false) === true)
+  const persona = getPersona(personaId)
+
+  // Progresso na trilha, guardado por persona (pontos, sequência, dia da semana...)
+  const [progressMap, setProgressMap] = useState(() => {
+    const saved = loadPref('progress', {})
+    return saved && typeof saved === 'object' ? saved : {}
+  })
+  const progress = isValidProgress(progressMap[personaId]) ? progressMap[personaId] : initialProgress(persona)
+  const setProgress = (next) => setProgressMap((m) => ({ ...m, [personaId]: next }))
+  const advance = () => setProgress(advanceDay(progress))
+  const restart = () => setProgress(initialProgress(persona))
+
+  // O link do WhatsApp traz a persona no endereço (#/situacao?persona=carla): abre a situação dela
+  useEffect(() => {
+    if (params.persona && getPersona(params.persona).id === params.persona) setPersonaId(params.persona)
+  }, [params.persona])
+
+  useEffect(() => savePref('persona', personaId), [personaId])
+  useEffect(() => savePref('progress', progressMap), [progressMap])
+  useEffect(() => savePref('barHidden', barHidden), [barHidden])
+  useEffect(() => {
+    document.title = `${TITLES[page]} · Finapp — PrevExemplo`
+  }, [page])
+
+  // Tecla D mostra/esconde a barra de demo (ignora quando se está digitando)
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key.toLowerCase() !== 'd' || e.ctrlKey || e.metaKey || e.altKey) return
+      if (['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName)) return
+      setBarHidden((h) => !h)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [])
+
+  // A página de comparação de identidades é um registro, fora da demo
+  if (page === 'identidades') return <Identities />
+
   return (
-    <main className="min-h-dvh bg-slate-50 text-slate-800 flex items-center justify-center p-6">
-      <section className="w-full max-w-md bg-white rounded-2xl shadow-sm border border-slate-200 p-8 text-center">
-        <h1 className="text-3xl sm:text-4xl font-bold">Olá, Finapp 👋</h1>
-        <p className="mt-4 text-lg text-slate-600">
-          Educação financeira e previdenciária para os participantes da{' '}
-          <strong>PrevExemplo</strong>.
-        </p>
-        <p className="mt-6 text-sm text-slate-500">
-          Projeto preparado (Etapa 0). Exemplo de valor formatado: {formatBRL(1234.5)}
-        </p>
-      </section>
-    </main>
+    <div className="flex min-h-dvh flex-col">
+      <DemoBar
+        page={page}
+        personaId={personaId}
+        onPersonaChange={setPersonaId}
+        hidden={barHidden}
+        onToggle={() => setBarHidden((h) => !h)}
+        day={progress.day}
+        weekFinished={progress.finished}
+        onAdvanceDay={advance}
+        onRestartWeek={restart}
+      />
+      <main className="flex flex-1 flex-col">
+        {page === 'apresentacao' && <Presentation />}
+        {page === 'whatsapp' && <WhatsApp persona={persona} progress={progress} />}
+        {page === 'situacao' && (
+          <Situation
+            key={persona.id}
+            persona={persona}
+            progress={progress}
+            onProgressChange={setProgress}
+            onRestart={restart}
+            fromWhatsApp={params.de === 'whatsapp'}
+          />
+        )}
+        {page === 'painel' && <Dashboard />}
+        {page === 'persona' && <PersonaSheet persona={persona} onPersonaChange={setPersonaId} />}
+      </main>
+    </div>
   )
 }
