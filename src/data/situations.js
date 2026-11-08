@@ -44,7 +44,7 @@ const roundForDisplay = (v) => {
   const step = abs < 10000 ? 1 : abs < 100000 ? 100 : 1000
   return Math.round(v / step) * step
 }
-const S = (v) => (Math.abs(v) < 100000 ? R(roundForDisplay(v)) : formatBRLShort(roundForDisplay(v)))
+export const S = (v) => (Math.abs(v) < 100000 ? R(roundForDisplay(v)) : formatBRLShort(roundForDisplay(v)))
 // Diferença entre dois valores, calculada com os valores já arredondados que aparecem na tela
 // (assim "R$ 26.800 − R$ 24.300" aparece como R$ 2.500, e não R$ 2.477).
 const D = (x, y) => S(roundForDisplay(x) - roundForDisplay(y))
@@ -267,7 +267,7 @@ const carla = [
           label: 'Trocar metade dos pedidos por comida feita no fim de semana',
           result: `${S(fv(delivery / 2))} em 10 anos`,
           detail: `Se os ${R(delivery / 2)} por mês que deixam de ir para o delivery forem guardados num investimento conservador.`,
-          numbers: { projected: fv(delivery / 2) },
+          numbers: { projected: fv(delivery / 2), monthly: delivery / 2 },
         },
         {
           id: 'b',
@@ -642,7 +642,7 @@ const roberto = [
           label: 'Investir metade e aproveitar a outra metade',
           result: `${S(fv(raise / 2))} aos ${a.retirementAge}`,
           detail: `Os ${R(raise / 2)} por mês vão para um investimento conservador; os outros ${R(raise / 2)} melhoram o dia a dia.`,
-          numbers: { projected: fv(raise / 2) },
+          numbers: { projected: fv(raise / 2), monthly: raise / 2 },
         },
       ],
       why: 'Quando a renda sobe, os gastos tendem a subir junto sem a gente perceber. Decidir antes para onde vai o aumento evita isso.',
@@ -774,7 +774,7 @@ const lucia = [
           label: `Aumentar para ${R(higher)}, para viajar mais`,
           result: `O saldo dura até os seus ${until(higher)} anos`,
           detail: `Seriam ${R(higher - current)} a mais por mês agora, mas a renda do plano acabaria ${years(until(current) - until(higher))} antes.`,
-          numbers: { untilAge: until(higher) },
+          numbers: { untilAge: until(higher), benefit: higher },
         },
         {
           id: 'c',
@@ -782,7 +782,7 @@ const lucia = [
           label: `Baixar para ${R(lower)}, usando a sobra que hoje fica parada`,
           result: `O saldo dura até os seus ${until(lower)} anos`,
           detail: `Os gastos continuam cobertos (a sobra de ${R(surplus)} zera) e a renda do plano dura ${years(until(lower) - until(current))} a mais.`,
-          numbers: { untilAge: until(lower) },
+          numbers: { untilAge: until(lower), benefit: lower },
         },
       ],
       why: 'No plano de contribuição definida, o benefício sai do saldo. Tirar um pouco menos hoje faz a renda durar mais, e viver muito é justamente o risco que a aposentadoria precisa cobrir.',
@@ -981,7 +981,7 @@ const lucia = [
           label: `Tirar ${R(help)} a menos do plano por mês`,
           result: `O saldo passa a durar até os seus ${until(current - help)} anos`,
           detail: `Antes, durava até os ${until(current)}. São ${years(until(current - help) - until(current))} a mais de renda do plano.`,
-          numbers: { untilAge: until(current - help) },
+          numbers: { untilAge: until(current - help), monthly: help },
         },
         {
           id: 'b',
@@ -1042,7 +1042,7 @@ const pedro = [
           label: `Separar ${R(surplus)} no dia em que a bolsa cai`,
           result: `${R(fv(surplus))} em 1 ano`,
           detail: 'Guardando primeiro, você se acostuma a viver com o resto.',
-          numbers: { projected: fv(surplus) },
+          numbers: { projected: fv(surplus), monthly: surplus },
         },
       ],
       why: 'Guardar primeiro e gastar depois é o hábito que mais faz diferença. E, quanto mais cedo começa, mais fácil fica.',
@@ -1067,7 +1067,7 @@ const pedro = [
           label: 'Cortar pela metade',
           result: `${S(fv(delivery / 2))} em 10 anos`,
           detail: `Se os ${R(delivery / 2)} por mês forem guardados num investimento conservador.`,
-          numbers: { projected: fv(delivery / 2) },
+          numbers: { projected: fv(delivery / 2), monthly: delivery / 2 },
         },
         {
           id: 'b',
@@ -1117,7 +1117,7 @@ const pedro = [
           label: `Entrar agora, aos ${p.age}`,
           result: `${S(fv(p.age))} aos ${a.retirementAge}`,
           detail: `Você coloca ${S(monthly * 12 * (a.retirementAge - p.age))} ao longo dos anos; o resto são os juros compostos trabalhando.`,
-          numbers: { projected: fv(p.age) },
+          numbers: { projected: fv(p.age), monthly },
         },
         {
           id: 'c',
@@ -1163,7 +1163,7 @@ const pedro = [
           label: 'Seguir com o celular atual e juntar para comprar à vista',
           result: `Em cerca de ${months(wait)}, compra por ${R(cash)}`,
           detail: `Guardando a sobra de ${R(surplus)} por mês. Cortando um pouco do delivery, chega antes.`,
-          numbers: { months: wait },
+          numbers: { months: wait, total: cash },
         },
         {
           id: 'c',
@@ -1288,7 +1288,7 @@ const pedro = [
           label: 'Subir o plano família para R$ 200, guardar R$ 100 na reserva e aproveitar o resto',
           result: `+${S(extraPlan)} no plano aos ${a.retirementAge}`,
           detail: `Os R$ 100 a mais no plano, por ${years(yrs)}, viram ${S(extraPlan)}. E ainda sobram ${R(raise - 200)} por mês para curtir.`,
-          numbers: { projected: extraPlan },
+          numbers: { projected: extraPlan, monthly: 200 },
         },
         {
           id: 'c',

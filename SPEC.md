@@ -279,6 +279,39 @@ _08/nov/2026_
   mercado e delivery).
 - **Alertas de gasto:** delivery acima do comum (Carla e Pedro), dinheiro parado na poupança
   (Roberto), saúde e ofertas de consignado (Dona Lúcia) e fatura do cartão (Carla).
+- **Plano e tabela de valores aprovados pelo Arthur**, com o pedido: "revise e retire
+  inconsistências, não esqueça nenhum gasto; o resumo tem que ser completo e fiel".
+- **Revisão de consistência (Claude), aplicada:**
+  - Régua: comparar com o que a pessoa faz **hoje**; numa decisão nova (oferta, compra, dinheiro
+    extra), com a opção "dá para melhorar". Com isso, a Carla no dia 3 passou de R$ 544 para R$ 408
+    (ela já contribui com 2%), a Dona Lúcia no dia 2 vale R$ 300 (hoje tira R$ 3.100, passa a
+    R$ 2.800) e, no dia 3, R$ 41 (a reserva já está na poupança, não em casa).
+  - Contribuição com contrapartida: conta só a parte da empresa.
+  - O mesmo dinheiro não conta duas vezes: Carla dias 3 e 7 e Roberto dias 1 e 7 são a mesma
+    decisão (vale uma vez); Pedro dias 1 e 3 usam a mesma sobra de R$ 150; o corte do dia 1 da
+    Carla já tem R$ 125 de delivery (o dia 5 vale R$ 195 se os dois forem escolhidos); a taxa de
+    0,5% do dia 5 do Roberto desconta R$ 35 do rendimento do dia 2.
+  - Consignados recusados (Dona Lúcia dias 1 e 5) contam os juros evitados, como o rotativo da
+    Carla. Compras à vista (tênis do Davi, celular do Pedro) contam o que se evita em relação ao
+    rotativo (R$ 660 e R$ 3.300), numa linha "de uma vez", fora da soma por mês. Golpe e consignado
+    para o sobrinho ficam como "proteção", fora da soma.
+  - Somando a melhor escolha em todos os dias: Carla R$ 1.217/mês (+ R$ 660 de uma vez), Roberto
+    R$ 2.957/mês, Dona Lúcia R$ 1.153/mês, Pedro R$ 554/mês (+ R$ 3.300 de uma vez).
+  - O resumo mostra a conta de cada dia ("Ver a conta de cada dia") e o texto "como contamos".
+- **Gráfico:** os 6 grupos cobrem todos os gastos das 4 personas (testado: nenhum fica de fora e a
+  soma dos grupos é igual ao total gasto). Mostra cada grupo em % da renda e, no fim, quanto entrou,
+  saiu e sobrou (ou faltou). Grupo sem gasto não aparece (Pedro não tem Saúde).
+- **Detalhes da conversa (Claude):** resumo de outubro em 1º de novembro; para o Pedro, que começa
+  do zero, boas-vindas com o mês de outubro no lugar do resumo. Semana da demo de 23 a 29 de
+  novembro; desafio às 8h, alertas às 19h (Pedro e Roberto no dia 1, Carla fatura no dia 2 e
+  delivery no dia 4, Dona Lúcia no dia 3); resumo de novembro em 30/nov às 9h. O botão do desafio
+  só funciona no dia de hoje; dias passados mostram "Respondida: ⭐ Melhor escolha · +30" ou "Não
+  respondida", e o desafio seguinte avisa se a folga protegeu a sequência. Rodapé com aviso de
+  conteúdo educativo e "responda SAIR".
+- **Detalhes técnicos:** conversa em `src/lib/conversation.js`, valor das escolhas em
+  `src/lib/choiceValue.js`, grupos de gastos em `src/lib/spending.js` (todos com testes); telas
+  em `src/components/whatsapp/`. O link é `#/situacao?persona=<id>&de=whatsapp`: abre a persona
+  certa e mostra "← Voltar ao WhatsApp". Capturas em `docs/capturas/etapa4-*.png`.
 
 ### Etapa 5
 -

@@ -27,3 +27,9 @@ export function pageFromHash(hash) {
 export function hashForPage(id) {
   return `#/${id}`
 }
+
+// "#/situacao?persona=carla&de=whatsapp" -> { persona: 'carla', de: 'whatsapp' }
+export function paramsFromHash(hash) {
+  const q = (hash || '').split('?')[1]
+  return q ? Object.fromEntries(new URLSearchParams(q)) : {}
+}

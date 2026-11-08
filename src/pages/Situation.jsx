@@ -11,7 +11,7 @@ import { answer, advanceDay, levelFor, DAYS_IN_WEEK } from '../lib/progress.js'
 
 // Área 3: a situação do dia (a trilha) que o participante abre pelo link do WhatsApp.
 // O progresso (dia, pontos, sequência) vem do App, guardado por persona.
-export default function Situation({ persona, progress, onProgressChange, onRestart }) {
+export default function Situation({ persona, progress, onProgressChange, onRestart, fromWhatsApp }) {
   const week = useMemo(() => weekFor(persona, ASSUMPTIONS), [persona])
   const situation = week[progress.day - 1]
   const answered = progress.answers[progress.day]
@@ -56,6 +56,15 @@ export default function Situation({ persona, progress, onProgressChange, onResta
       }
     >
       <div ref={topRef} className="flex flex-1 flex-col gap-4 bg-cream p-4">
+        {/* quem chegou pelo link do WhatsApp pode voltar para a conversa */}
+        {fromWhatsApp && (
+          <a
+            href="#/whatsapp"
+            className="-mx-4 -mt-4 flex items-center gap-2 bg-[#075E54] px-4 py-2 text-sm font-bold text-white hover:bg-[#064C44]"
+          >
+            ← Voltar ao WhatsApp
+          </a>
+        )}
         <div className="flex items-center justify-between">
           <Logo size={34} />
           <span className="text-sm font-semibold text-muted">PrevExemplo</span>

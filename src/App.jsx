@@ -21,7 +21,7 @@ const TITLES = {
 }
 
 export default function App() {
-  const page = useHashRoute()
+  const { page, params } = useHashRoute()
   const [personaId, setPersonaId] = useState(() => getPersona(loadPref('persona', DEFAULT_PERSONA_ID)).id)
   const [barHidden, setBarHidden] = useState(() => loadPref('barHidden', false) === true)
   const persona = getPersona(personaId)
@@ -35,6 +35,11 @@ export default function App() {
   const setProgress = (next) => setProgressMap((m) => ({ ...m, [personaId]: next }))
   const advance = () => setProgress(advanceDay(progress))
   const restart = () => setProgress(initialProgress(persona))
+
+  // O link do WhatsApp traz a persona no endereço (#/situacao?persona=carla): abre a situação dela
+  useEffect(() => {
+    if (params.persona && getPersona(params.persona).id === params.persona) setPersonaId(params.persona)
+  }, [params.persona])
 
   useEffect(() => savePref('persona', personaId), [personaId])
   useEffect(() => savePref('progress', progressMap), [progressMap])
@@ -72,7 +77,7 @@ export default function App() {
       />
       <main className="flex flex-1 flex-col">
         {page === 'apresentacao' && <Presentation />}
-        {page === 'whatsapp' && <WhatsApp persona={persona} />}
+        {page === 'whatsapp' && <WhatsApp persona={persona} progress={progress} />}
         {page === 'situacao' && (
           <Situation
             key={persona.id}
@@ -80,6 +85,7 @@ export default function App() {
             progress={progress}
             onProgressChange={setProgress}
             onRestart={restart}
+            fromWhatsApp={params.de === 'whatsapp'}
           />
         )}
         {page === 'painel' && <Dashboard />}
