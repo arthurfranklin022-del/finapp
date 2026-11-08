@@ -9,10 +9,13 @@
 // - plan: situação no plano da PrevExemplo
 //   - contributionPct: quanto a pessoa contribui, em % do salário bruto (só ativos)
 //   - monthlyBenefit: benefício recebido por mês (só assistidos)
+// - start: como a persona chega na semana da demo (já usa o app há um tempo — Etapa 3)
+//   - points: pontos acumulados · streak: dias seguidos respondendo, até ontem
 
 export const personas = [
   {
     id: 'carla',
+    start: { points: 30, streak: 1 },
     name: 'Carla',
     age: 38,
     profile: 'Endividada, no limite',
@@ -39,6 +42,7 @@ export const personas = [
   },
   {
     id: 'roberto',
+    start: { points: 110, streak: 5 },
     name: 'Roberto',
     age: 45,
     profile: 'Guarda, mas não investe',
@@ -64,6 +68,7 @@ export const personas = [
   },
   {
     id: 'lucia',
+    start: { points: 280, streak: 12 },
     name: 'Dona Lúcia',
     age: 62,
     profile: 'Aposentada recente',
@@ -99,6 +104,7 @@ export const personas = [
   },
   {
     id: 'pedro',
+    start: { points: 0, streak: 0 },
     name: 'Pedro',
     age: 19,
     profile: 'Jovem da família',

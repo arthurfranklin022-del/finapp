@@ -250,6 +250,16 @@ _07/nov/2026_
   dívida dobra em 6 meses); diferenças calculadas sobre os valores arredondados mostrados;
   correções de contas incoerentes (Pedro dia 3, Roberto dia 3, Carla dias 3, 5 e 7, Pedro dia 4).
   Testes em `src/data/situations.test.js` garantem que a "melhor escolha" tem o melhor número.
+- **Conteúdo e premissas aprovados pelo Arthur** (08/nov/2026).
+- **Detalhes da tela (Claude):** depois de responder, aparecem as 3 escolhas com a conta de cada
+  uma, o "por que isso importa" e um quadro recolhível "Premissas das contas". Ícones: ⭐ melhor
+  escolha, 👍 caminho do meio, 🌱 dá para melhorar. No 7º dia, o botão "Ver o resumo da semana"
+  fecha a semana. Aviso gentil quando um dia é pulado (folga usada ou sequência recomeçada).
+- **Detalhes técnicos:** regras em `src/lib/progress.js` (com testes); situações em
+  `src/data/situations.js`; telas em `src/components/trail/`; o progresso de cada persona fica
+  salvo no navegador (sobrevive a recarregar a página). Na barra de demo: "Avançar ⏭" e "↺"
+  (recomeçar a semana da persona). Jogando bem, sobe de nível: Carla no dia 3, Pedro no 4,
+  Roberto no 5, Dona Lúcia no 6. Capturas em `docs/capturas/etapa3-*.png`.
 
 ### Etapa 4
 -
