@@ -262,7 +262,23 @@ _07/nov/2026_
   Roberto no 5, Dona Lúcia no 6. Capturas em `docs/capturas/etapa3-*.png`.
 
 ### Etapa 4
--
+_08/nov/2026_
+- **Base:** o trabalho das Etapas 1 a 3 estava num ramo separado no GitHub; a Etapa 4 parte dele.
+- **A conversa segue o dia da demo:** mostra as mensagens até o dia atual da persona; cada
+  "Avançar ⏭" faz chegar o desafio do dia seguinte.
+- **Link do desafio:** leva à área "Situação do dia", na persona e no dia certos, com um botão
+  para voltar ao WhatsApp.
+- **Resumo do mês:** no topo da conversa, o resumo do mês passado (outubro, fixo e fictício).
+  Ao fim da semana da demo, chega um 2º resumo com o que a pessoa jogou.
+- **"Quanto poderia ter guardado":** soma das melhores escolhas da semana, numa régua comum de
+  **R$ por mês que fica no bolso**. Escolhas sem efeito mensal (ex.: não cair em golpe) entram
+  como "proteção", fora da soma. O Claude propõe o valor de cada situação e o Arthur revisa.
+- **Gráfico de gastos no resumo:** quanto da renda foi para cada grande grupo, em 6 grupos
+  (Moradia e contas · Alimentação · Transporte · Saúde · Lazer e assinaturas · Família e
+  outros). **Clicável:** tocar num grupo mostra os gastos dentro dele (ex.: Alimentação abre
+  mercado e delivery).
+- **Alertas de gasto:** delivery acima do comum (Carla e Pedro), dinheiro parado na poupança
+  (Roberto), saúde e ofertas de consignado (Dona Lúcia) e fatura do cartão (Carla).
 
 ### Etapa 5
 -
