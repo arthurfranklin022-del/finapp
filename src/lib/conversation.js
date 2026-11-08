@@ -17,7 +17,7 @@ import {
 } from './finance.js'
 import { formatBRLRounded as R, formatPercent } from './format.js'
 import { levelFor, DAYS_IN_WEEK } from './progress.js'
-import { spendingByGroup, monthOverview } from './spending.js'
+import { spendingByGroup, monthOverview, donutSlices } from './spending.js'
 import { choicesSummary } from './choiceValue.js'
 import { THEMES, S } from '../data/situations.js'
 import { monthlyBalance, yearsToRetirement } from '../data/personas.js'
@@ -140,7 +140,7 @@ export function alertsFor(persona, assumptions) {
 
 // ------------------------------------------------------------------ resumos
 function monthBlock(persona) {
-  return { overview: monthOverview(persona), groups: spendingByGroup(persona) }
+  return { overview: monthOverview(persona), groups: spendingByGroup(persona), donut: donutSlices(persona) }
 }
 
 function previousSummary(persona) {

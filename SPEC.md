@@ -312,6 +312,15 @@ _08/nov/2026_
   `src/lib/choiceValue.js`, grupos de gastos em `src/lib/spending.js` (todos com testes); telas
   em `src/components/whatsapp/`. O link é `#/situacao?persona=<id>&de=whatsapp`: abre a persona
   certa e mostra "← Voltar ao WhatsApp". Capturas em `docs/capturas/etapa4-*.png`.
+- **Gráfico de rosca (pedido do Arthur depois da entrega):** nos resumos, a rosca fica em cima e
+  a lista clicável dos grupos embaixo (as barras saíram). A rosca inteira é a renda: os grupos
+  mais uma fatia cinza "Sobrou" (Roberto 25%, Dona Lúcia 5%, Pedro 9%). A Carla gasta mais do
+  que ganha, então a rosca dela mostra o total gasto e o centro diz "Faltaram R$ 450". Tocar numa
+  fatia ou num grupo abre os gastos de dentro. **Cores:** paleta testada para daltonismo e visão
+  normal entre fatias vizinhas, puxando a marca. Cada grupo tem sempre a mesma cor: Moradia
+  verde `#2f8a4e`, Alimentação mel `#E9A23B`, Transporte rosa `#d55181`, Saúde violeta
+  `#6250d6`, Lazer verde-água `#1baf7a`, Família azul `#2a78d6`, Sobrou cinza `#C4CAD0`. Os
+  grupos aparecem sempre na mesma ordem. Capturas em `docs/capturas/etapa4-rosca-*.png`.
 
 ### Etapa 5
 -

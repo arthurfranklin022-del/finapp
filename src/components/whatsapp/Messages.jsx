@@ -99,7 +99,7 @@ export function WelcomeMessage({ m, persona }) {
         do dia, com os números da sua vida, para cuidar melhor do seu dinheiro.
       </p>
       <p className="mt-1">Para começar, olha como foi o seu mês de outubro:</p>
-      <SpendingChart groups={m.groups} overview={m.overview} incomeLabel="bolsa" />
+      <SpendingChart groups={m.groups} overview={m.overview} donut={m.donut} incomeLabel="bolsa" />
       <p className="mt-2">A partir de segunda, a cada manhã chega um desafio novo. Você começa no nível Semente 🌰.</p>
     </Bubble>
   )
@@ -130,7 +130,7 @@ export function SummaryMessage({ m, persona }) {
         )}
       </ul>
       {final && <ChoicesBlock choices={m.choices} />}
-      <SpendingChart groups={m.groups} overview={m.overview} incomeLabel={income} />
+      <SpendingChart groups={m.groups} overview={m.overview} donut={m.donut} incomeLabel={income} />
     </Bubble>
   )
 }
